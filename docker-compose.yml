@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  db:
+    image: "postgres"
+    container_name: db
+    volumes:
+      - test-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/test
+      POSTGRES_DB: test
+      POSTGRES_PASSWORD: BaselineMountain1
+  api_service:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      - "db"
+
+
+#VOLUMES
+volumes:
+  test-data:
