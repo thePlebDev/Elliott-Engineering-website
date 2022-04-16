@@ -4,6 +4,13 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+###FRONTEND###
+src/frontend/demo-app/node_modules*
+src/frontend/demo-app/build*
+src/frontend/demo-app/.env
+
+
+
 ### STS ###
 .apt_generated
 .classpath
