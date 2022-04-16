@@ -10,7 +10,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/test
       POSTGRES_DB: test
-      POSTGRES_PASSWORD: BaselineMountain1
+      POSTGRES_PASSWORD: 
   api_service:
     build: .
     ports:
