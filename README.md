@@ -12,7 +12,7 @@
 - [Tech stack](#tech-stack)
 - [Products](#products)
 - [Contributing](#contributing)
-- [License](license)
+- [License](#license)
 
 
 
