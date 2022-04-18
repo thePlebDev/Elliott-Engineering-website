@@ -15,27 +15,22 @@ public class User {
     @JoinColumn
     private StripeCustomer stripeCustomer;
 
-    @Column(unique = true)
-    private String username;
 
     @Column
     private String password;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
 
     public User(){}
-    public User(String username, String password, String email){
-        this.username = username;
-        this.password = password;
+    public User(String email, String password){
         this.email = email;
+        this.password = password;
     }
 
     //GETTERS
-    public String getUsername(){
-        return this.username;
-    }
+
     public String getPassword(){
         return this.password;
     }
@@ -50,9 +45,7 @@ public class User {
 
 
     //SETTERS
-    public void setUsername(String username){
-        this.username = username;
-    }
+
     public void setPassword(String password){
         this.password = password;
     }
