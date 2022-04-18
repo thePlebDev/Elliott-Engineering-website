@@ -31,9 +31,7 @@ This is a passion project of mine. My goal is to make free, aforadable and open 
 
 ## Contributing
 
-This document is for the latest Aimeos TYPO3 **21.10 release and later**.
-
-- LTS release: 21.10 (TYPO3 10/11 LTS)
+- Still working out 
 
 ## License
 Copyright (c) 2012-2022 Tristan Elliott
