@@ -11,11 +11,15 @@ import com.stripe.model.checkout.Session;
 import com.stripe.param.CustomerCreateParams;
 import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/user",produces = "application/json",method = {RequestMethod.GET,RequestMethod.POST})
 public class UserController {
+
+    @Value("${Strip.sk.key}")
+    private String apikey;
 
     @Autowired
     private UserService userService;
@@ -41,26 +45,27 @@ public class UserController {
 
     @PostMapping("/create-customer")
     public String createCustomerId(){
-        String apikey = "INSERT THE SK_TEST_KEY VIA @VALUE";
-        Stripe.apiKey = apikey;
-        CustomerCreateParams params =
-                CustomerCreateParams.builder()
-                        .setEmail("bob@bobmail.com")
-                        .setPaymentMethod("pm_card_visa")
-                        .setInvoiceSettings(
-                                CustomerCreateParams.InvoiceSettings
-                                        .builder()
-                                        .setDefaultPaymentMethod("pm_card_visa")
-                                        .build()
-                        )
-                        .build();
-        try{
-            Customer customer = Customer.create(params);
-            return customer.getId();
-        } catch (StripeException e) {
-            e.printStackTrace();
-            return e.getMessage();
-        }
+        return apikey;
+
+//        Stripe.apiKey = apikey;
+//        CustomerCreateParams params =
+//                CustomerCreateParams.builder()
+//                        .setEmail("bob@bobmail.com")
+//                        .setPaymentMethod("pm_card_visa")
+//                        .setInvoiceSettings(
+//                                CustomerCreateParams.InvoiceSettings
+//                                        .builder()
+//                                        .setDefaultPaymentMethod("pm_card_visa")
+//                                        .build()
+//                        )
+//                        .build();
+//        try{
+//            Customer customer = Customer.create(params);
+//            return customer.getId();
+//        } catch (StripeException e) {
+//            e.printStackTrace();
+//            return e.getMessage();
+//        }
     }
 
 //    @PostMapping("/create-customer1")

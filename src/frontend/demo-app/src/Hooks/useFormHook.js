@@ -20,7 +20,7 @@ const useFormHook =(validationFunction,startingState,apiCall,defaultLoadingStatu
         const {value,name} = e.target
         setState({...state,[name]:value})
     }
-
+ 
     useEffect(()=>{
         
         if(isSubmitting && Object.keys(errors).length===0){
