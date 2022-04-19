@@ -3,12 +3,13 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/resources/application.properties
 
 ###FRONTEND###
 src/frontend/demo-app/node_modules*
 src/frontend/demo-app/build*
 src/frontend/demo-app/.env
-
+src/frontend/demo-app/node/*
 
 
 ### STS ###

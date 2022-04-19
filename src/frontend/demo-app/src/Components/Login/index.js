@@ -44,7 +44,6 @@ const Login =()=>{
             <Form handleSubmit={handleSubmit}>
                 <TextInput type="text" placeHolder={"Username"} errors={errors.username} value={state.username} name="username" handleChange={handleChange} />
                 <TextInput type="password" placeHolder={"Password"} errors={errors.password} value={state.password} name="password" handleChange={handleChange} />
-                <SubscriptionInput/>
                 <Link to="/signup">
                     <ForgotText>Create an account here</ForgotText>
                 </Link>
