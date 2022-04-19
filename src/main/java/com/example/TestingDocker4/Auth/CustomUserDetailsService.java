@@ -18,10 +18,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Supplier<UsernameNotFoundException> error = ()-> new UsernameNotFoundException("Problem during authentication");
 
-        User user = userRepository.findByUsername(username)
+        User user = userRepository.findByEmail(email)
                 .orElseThrow(error);
 
         return new SecurityUser(user);

@@ -45,7 +45,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 .build()
                 .parseClaimsJws(jwt)
                 .getBody();
-        String username = String.valueOf(claims.get("username"));
+        String username = String.valueOf(claims.get("email"));
         GrantedAuthority authority = new SimpleGrantedAuthority("user");
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                 username,

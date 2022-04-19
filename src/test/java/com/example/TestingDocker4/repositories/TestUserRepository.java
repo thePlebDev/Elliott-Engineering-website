@@ -17,48 +17,19 @@ public class TestUserRepository {
     private UserRepository underTest;
 
     @Test
-    public void testFindUser(){
-        //GIVEN
-        String EXPECTED_USERNAME = "BOB";
-        User user = new User(EXPECTED_USERNAME,"12345","meail@mail.com");
-
-        //WHEN
-        underTest.save(user);
-        User foundUser = underTest.getById(1l);
-
-        //THEN
-        assertThat(foundUser.getUsername()).isEqualTo(EXPECTED_USERNAME);
-
-    }
-
-    @Test
-    public void testFindUserByUsername(){
-        //GIVEN
-        String EXPECTED_USERNAME = "BOB";
-        User user = new User(EXPECTED_USERNAME,"12345","meail@mail.com");
-
-        //WHEN
-        underTest.save(user);
-       User foundUser = underTest.findByUsername(EXPECTED_USERNAME).orElseThrow();
-
-       //THEN
-        assertThat(foundUser.getUsername()).isEqualTo(EXPECTED_USERNAME);
-
-    }
-
-    @Test
     public void testFindByEmailTrue(){
         //GIVEN
-        String EXPECTED_EMAIL = "bob@bobmail.com";
-        User user = new User("BOB","12345",EXPECTED_EMAIL);
-
+        String EXPECTED_USERNAME ="IT DO BE LIKE THAT SOMETIMES";
+        User user = new User(EXPECTED_USERNAME,"12345");
 
         //WHEN
         underTest.save(user);
-        User foundUser = underTest.findByEmail(EXPECTED_EMAIL).orElseThrow();
+        User foundUser = underTest.findByEmail(EXPECTED_USERNAME).orElseThrow();
+
 
         //THEN
-        assertThat(foundUser.getEmail()).isEqualTo(EXPECTED_EMAIL);
+        assertThat(foundUser.getEmail()).isEqualTo(EXPECTED_USERNAME);
+
     }
 
 

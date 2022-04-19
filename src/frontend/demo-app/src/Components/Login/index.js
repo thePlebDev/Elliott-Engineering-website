@@ -28,7 +28,7 @@ const ForgotText = styled.div`
 const Login =()=>{
 
     const {state,errors,status,handleChange,handleSubmit} = useFormHook(passwordCurryCheck,
-        {username:"",password:""},
+        {email:"",password:""},
         requestBackend,
         {loadingState:formLoadingStates.RESTING,message:"Login"},
         "/api/v1/user/login",
@@ -42,7 +42,7 @@ const Login =()=>{
         <FormContainer>
             <ErrorNotifications errors={errors}/>
             <Form handleSubmit={handleSubmit}>
-                <TextInput type="text" placeHolder={"Username"} errors={errors.username} value={state.username} name="username" handleChange={handleChange} />
+                <TextInput type="email" placeHolder={"Email"} errors={errors.email} value={state.email} name="email" handleChange={handleChange} />
                 <TextInput type="password" placeHolder={"Password"} errors={errors.password} value={state.password} name="password" handleChange={handleChange} />
                 <Link to="/signup">
                     <ForgotText>Create an account here</ForgotText>
