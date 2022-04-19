@@ -10,6 +10,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class UserService {
+
+    @Value("${Strip.sk.key}")
+    private String apikey;
 
 
     private BCryptPasswordEncoder passwordEncoder;
@@ -50,43 +54,9 @@ public class UserService {
         return "USER SAVED";
     }
 
-    public String login(String username, String password){
-        //customAuthenticationProvider.authenticate(username);
-
-        return "THIS IS NOT WORKING YET";
-
+    public String create(){
+        return apikey;
     }
 
-    public String subscribe()  {
-        Stripe.apiKey = "sk_test_51E89VVIUupCxt3YboFWGG6gZ7PX7xZNJ9K82x9HOIXNUM1II4OCg1813299W2rYmhGNm00OmdBNfQnXEHRJRuC4900zDiuLMYJ";
-        String priceId = "price_1Kh1oMIUupCxt3YbPd92xUh6";
 
-        SessionCreateParams params = new SessionCreateParams.Builder()
-                .setSuccessUrl("https://example.com/success.html?session_id={CHECKOUT_SESSION_ID}")
-                .setCancelUrl("https://example.com/canceled.html")
-                .setMode(SessionCreateParams.Mode.SUBSCRIPTION)
-                .addLineItem(new SessionCreateParams.LineItem.Builder()
-                        // For metered billing, do not pass quantity
-                        .setQuantity(1L)
-                        .setPrice(priceId)
-                        .build()
-                )
-                .build();
-        try{
-            Session session = Session.create(params);
-            System.out.println(session.getId());
-
-        } catch (StripeException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-
-
-        return "ok";
-    }
-
-//    public String createUserId(String username,String email){
-//      //NEED TO REWORK EVERYTHING SO THAT EMAIL IS USED FOR AUTHENTICATION
-//
-//    }
 }
