@@ -4,10 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 <<<<<<< HEAD
+<<<<<<< HEAD
 src/main/resources*
-=======
-src/main/resources/application.properties
->>>>>>> adding frontend changes
+
 
 ###FRONTEND###
 src/frontend/demo-app/node_modules*
