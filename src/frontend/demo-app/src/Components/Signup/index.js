@@ -31,7 +31,7 @@ const ForgotText = styled.div`
 const Signup =()=>{
 
     const {state,errors,status,handleChange,handleSubmit} = useFormHook(passwordCurryCheck,
-        {username:"",email:"",password1:"",password2:""},
+        {email:"",password1:"",password2:""},
         requestBackend,
         {loadingState:formLoadingStates.RESTING,message:"Signup and support"},
         "/api/v1/user/signup",
@@ -45,7 +45,6 @@ const Signup =()=>{
         <FormContainer>
             <ErrorNotifications errors={errors}/>
             <Form handleSubmit={handleSubmit}>
-                <TextInput type="text" placeHolder={"Username"} errors={errors.username} value={state.username} name="username" handleChange={handleChange} />
                 <TextInput type="email" placeHolder={"Email"} errors={errors.email} value={state.email} name="email" handleChange={handleChange} />
                 <SubscriptionInput/>
                 <TextInput type="password" placeHolder={"Password"} errors={errors.password1} value={state.password1} name="password1" handleChange={handleChange} />
