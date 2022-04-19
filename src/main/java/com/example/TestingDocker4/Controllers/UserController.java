@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/v1/user",produces = "application/json",method = {RequestMethod.GET,RequestMethod.POST})
 public class UserController {
 
-    @Value("${Strip.sk.key}")
-    private String apikey;
 
     @Autowired
     private UserService userService;
@@ -45,7 +43,7 @@ public class UserController {
 
     @PostMapping("/create-customer")
     public String createCustomerId(){
-        return apikey;
+        return this.userService.create();
 
 //        Stripe.apiKey = apikey;
 //        CustomerCreateParams params =
