@@ -11,6 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
+
 public class TestUserRepository {
 
     @Autowired

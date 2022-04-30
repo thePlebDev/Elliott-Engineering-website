@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<String> handleUsernameNotFound(UsernameNotFoundException ex, WebRequest request){
 
-        return new ResponseEntity<>("Username not found", HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
     }
 
 

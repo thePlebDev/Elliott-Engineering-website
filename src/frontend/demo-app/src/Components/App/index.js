@@ -9,12 +9,10 @@ import ProductsPage from "../ProductsPage";
 import Signup from "../Signup";
 import Login from "../Login";
 import PersonalAccount from "../PersonalAccount"
-import TestSubcription from "../TestSubscription";
 
 
 
 const App =()=>{
-    let another = "testing";
     return(
         <>
             <Navigation/>
@@ -25,7 +23,6 @@ const App =()=>{
                 <Route path="/products" exact element={<ProductsPage />} />
                 <Route path="/signup" exact element={<Signup />} />
                 <Route path="/login" exact element={<Login />} />
-                <Route path="/testsub" exact element={<TestSubcription />} />
                 <Route path="/account/personal" exact element={<PersonalAccount/>}/>
                 <Route path="*" element={<Home />} />
             </Routes>

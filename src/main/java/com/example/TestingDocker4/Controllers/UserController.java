@@ -1,6 +1,7 @@
 package com.example.TestingDocker4.Controllers;
 
 import com.example.TestingDocker4.Exceptions.JWTFilterException;
+import com.example.TestingDocker4.Exceptions.UsernameAlreadyExists;
 import com.example.TestingDocker4.Models.StripeCustomer;
 import com.example.TestingDocker4.Models.User;
 import com.example.TestingDocker4.services.UserService;
@@ -13,6 +14,8 @@ import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/v1/user",produces = "application/json",method = {RequestMethod.GET,RequestMethod.POST})
@@ -41,36 +44,6 @@ public class UserController {
     }
 
 
-    @PostMapping("/create-customer")
-    public String createCustomerId(){
-        return this.userService.create();
 
-//        Stripe.apiKey = apikey;
-//        CustomerCreateParams params =
-//                CustomerCreateParams.builder()
-//                        .setEmail("bob@bobmail.com")
-//                        .setPaymentMethod("pm_card_visa")
-//                        .setInvoiceSettings(
-//                                CustomerCreateParams.InvoiceSettings
-//                                        .builder()
-//                                        .setDefaultPaymentMethod("pm_card_visa")
-//                                        .build()
-//                        )
-//                        .build();
-//        try{
-//            Customer customer = Customer.create(params);
-//            return customer.getId();
-//        } catch (StripeException e) {
-//            e.printStackTrace();
-//            return e.getMessage();
-//        }
-    }
-
-//    @PostMapping("/create-customer1")
-//    public String createCustomer(@RequestBody StripeCustomer stripeCustomer){
-//
-//        userService.createUserId(stripeCustomer.getUsername(),stripeCustomer.getEmail());
-//
-//    }
 
 }

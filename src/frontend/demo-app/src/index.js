@@ -19,7 +19,8 @@ import {
 import App from "./Components/App";
 
 const root = createRoot(document.getElementById("root"))
-const stripePromise = loadStripe("pk_test_VXyyQFowid4YOcK4QRXsb7PG")
+
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY)
 
 root.render(
     <Router>

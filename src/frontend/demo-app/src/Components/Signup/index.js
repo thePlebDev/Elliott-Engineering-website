@@ -46,7 +46,6 @@ const Signup =()=>{
             <ErrorNotifications errors={errors}/>
             <Form handleSubmit={handleSubmit}>
                 <TextInput type="email" placeHolder={"Email"} errors={errors.email} value={state.email} name="email" handleChange={handleChange} />
-                <SubscriptionInput/>
                 <TextInput type="password" placeHolder={"Password"} errors={errors.password1} value={state.password1} name="password1" handleChange={handleChange} />
                 <TextInput type="password" placeHolder={"Confirm password"} errors={errors.password2} value={state.password2} name="password2" handleChange={handleChange} />
                 <Link to="/login">

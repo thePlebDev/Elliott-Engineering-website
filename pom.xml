@@ -80,9 +80,13 @@
 			<artifactId>stripe-java</artifactId>
 			<version>20.113.0</version>
 		</dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
 
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>

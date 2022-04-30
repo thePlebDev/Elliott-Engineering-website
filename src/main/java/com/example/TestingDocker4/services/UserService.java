@@ -1,20 +1,22 @@
 package com.example.TestingDocker4.services;
 
-import com.example.TestingDocker4.Auth.CustomAuthenticationProvider;
-import com.example.TestingDocker4.Exceptions.JWTFilterException;
-import com.example.TestingDocker4.Models.Role;
+import com.example.TestingDocker4.Exceptions.UsernameAlreadyExists;
 import com.example.TestingDocker4.Models.User;
+import com.example.TestingDocker4.Utils.PaymentProcessingObject;
+import com.example.TestingDocker4.Utils.StripeApi;
 import com.example.TestingDocker4.repositories.UserRepository;
-import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
-import com.stripe.model.checkout.Session;
-import com.stripe.param.checkout.SessionCreateParams;
+import com.stripe.model.Subscription;
+import com.stripe.param.SubscriptionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * TODO: REWORK THE ROLE SYSTEM
@@ -24,20 +26,21 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserService {
 
-    @Value("${Strip.sk.key}")
-    private String apikey;
+
 
 
     private BCryptPasswordEncoder passwordEncoder;
     private UserRepository userRepository;
-    private CustomAuthenticationProvider customAuthenticationProvider;
+    private PaymentProcessingObject paymentProcessingObject;
 
     //private Role role = new Role("BASIC");;
 
     @Autowired
-    public UserService(BCryptPasswordEncoder passwordEncoder, UserRepository userRepository){
+    public UserService(BCryptPasswordEncoder passwordEncoder, UserRepository userRepository,
+                       StripeApi paymentProcessingObject){
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+        this.paymentProcessingObject = paymentProcessingObject;
     }
 
 //    //public void setRole(Role role) {
@@ -54,9 +57,12 @@ public class UserService {
         return "USER SAVED";
     }
 
-    public String create(){
-        return apikey;
-    }
+
+
+
+
+
+
 
 
 }

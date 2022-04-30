@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useRef,useEffect} from "react";
 import styled from "styled-components";
 
 
@@ -7,7 +7,7 @@ const Container = styled.div`
     outline:none;
     margin:10px 0;
     margin-bottom:20px;
-    border:${({state})=> state ? "2px solid #00a862" : "2px solid red"};
+    border: 2px solid #00a862;
     display:flex;
     flex-direction:column;
     padding:15px;
@@ -55,21 +55,17 @@ const CheckBox = styled.input`
 
 
 
-const SubscriptionInput =()=>{
-    const [clicked, setClicked] = useState(true)
-
-    const handleClick=()=>{
-        setClicked(!clicked);
-    }
+const SubscriptionInput =({title,amount,value,handleChange})=>{
+    
     
     return(
-        <Container onClick={()=>handleClick()} state={clicked}>
+        <Container  onClick={()=>handleChange()}>
             <SubContainer>
-                <CheckBox type="checkbox" checked={clicked}/>
+                <CheckBox type="radio" name="Subscription" onChange={()=>handleChange()} checked={value}  />
             </SubContainer>
-            <MonthlyText>Supporter tier</MonthlyText>
+            <MonthlyText>{title} tier</MonthlyText>
             <div>
-                <Money>$5</Money>
+                <Money>${amount}</Money>
                 <MoneyText>/Month</MoneyText>
              </div>
             

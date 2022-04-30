@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom"
 
@@ -6,6 +6,7 @@ import CardContainer from "../Cards/cardContainer";
 import AndroidImage from "../../Resources/android.png"
 
 import productPageInfo from "../../Utils/Constants/productsPageInfo";
+import softwareLibraryInfo from '../../Utils/Constants/softwareLibraryInfo'
 
 
 const SuperContainer = styled.div`
@@ -28,14 +29,6 @@ const Container = styled.div`
 `
 
 
-const AboutText = styled.div`
-    font-weight: 700;
-    text-align:center;
-    margin:2rem auto;
-    font-size:30px;
-    letter-spacing:1px;
-
-`
 const Title = styled.div`
     color: #888;
     font-size:25px;
@@ -97,14 +90,53 @@ const Tag2 = styled(Tag)`
   }
 
 `
+const AboutText = styled.div`
+    font-weight: 700;
+    text-align:center;
+    margin:10px;
+    padding:10px;
+    cursor:pointer;
+    border-radius:8px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 2px 2px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 7%);
+    
+    border:${({theme})=> "2px solid " + theme.mainColor};
+   
+
+`
+const TextContainer = styled.div`
+    margin:2rem auto;
+    font-size:20px;
+    letter-spacing:1px;
+    display:flex;
+    justify-content:space-between;
+    
+
+    @media only screen and (min-width: 600px) {
+        font-size:30px;
+      }
+
+
+
+`
 
 
 const ProductsPage = ()=>{
+    const [state,setState] = useState(true);
+
+    const handleClick = (state)=>{
+        setState(state)
+    }
     return(
         <SuperContainer>
-            <AboutText>Software Products</AboutText>
+            <TextContainer>
+                <AboutText state={state} onClick={()=>handleClick(true)}>Products</AboutText>
+                <AboutText state={state} onClick={()=>handleClick(false)}>Libraries</AboutText>
+            </TextContainer>
+            
             <Container>
                 {
+                    state
+                      ?
                     productPageInfo.map((item)=>{
                         return(
                             <CardContainer key={item.id}>
@@ -141,6 +173,45 @@ const ProductsPage = ()=>{
                          </CardContainer>
 
                         )
+                    })
+                    :
+                    softwareLibraryInfo.map((item)=>{
+                        return(
+                            <CardContainer key={item.id}>
+                                <Image src={AndroidImage}/>
+                                <Title>{item.title}</Title>
+                                <Hr/>
+                                <Details>
+                                    {item.details}
+                                </Details>
+                                <Hr/>
+                                <TagContainer>
+                                    {
+                                        item.infoTags.map((item)=>{
+                                            return(
+                                                <Tag key={item.id}>{item.title}</Tag>
+                                            )
+                                        })
+                                    }
+                                </TagContainer>
+                                <Hr/>
+                                <TagContainer>
+                                    {
+                                        item.links.map((item)=>{
+                                            return (
+                                                    <a href={item.link} target="_blank">
+                                                        <Tag2>
+                                                            {item.title}
+                                                        </Tag2>
+                                                    </a>
+                                                    )
+                                        })
+                                    }
+                                </TagContainer>  
+                         </CardContainer>
+
+                        )
+                        
                     })
                 }
                 
